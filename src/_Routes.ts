@@ -1,5 +1,6 @@
-import { Library, SquareTerminal } from "lucide-react";
+import { Library, QrCode } from "lucide-react";
 import Dummy from "./Dummy";
+import QrCodeGenerator from "./QrCodeGenerator";
 
 export const AppRoutes: {
     id: string;
@@ -10,11 +11,11 @@ export const AppRoutes: {
     icon: any;
 }[] = [
     {
-        id: "dashboard",
-        name: "Dashboard",
+        id: "generate",
+        name: "Generate QR Code",
         url: "/",
-        component: Dummy,
-        icon: SquareTerminal,
+        component: QrCodeGenerator,
+        icon: QrCode,
     },
     {
         id: "list",

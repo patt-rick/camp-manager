@@ -12,8 +12,8 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Link } from "react-router-dom";
-import { AppRoutes } from "./_Routes";
 import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar";
+import { AppRoutes } from "./_Routes";
 
 type Props = {
     children: any;

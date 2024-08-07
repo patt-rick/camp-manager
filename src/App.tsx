@@ -1,8 +1,8 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
-import { AppRoutes } from "./_Routes";
 import NotFoundPage from "./NotFoundPage";
 import Authenticate from "./Authenticated";
+import { AppRoutes } from "./_Routes";
 
 function App() {
     return (

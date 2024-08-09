@@ -2,3 +2,28 @@
     max-width: 1580px;
     margin: 0 auto;
 }
+#html5-qrcode-button-camera-start {
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font: 500;
+    background-color: #16a34a;
+    border: 0px solid rgb(0, 67, 0);
+    color: white;
+}
+#html5-qrcode-button-camera-stop {
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font: 500;
+    background-color: rgb(173, 6, 6);
+    border: 0px solid rgb(149, 0, 0);
+    color: white;
+}
+
+#html5-qrcode-button-camera-permission {
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font: 500;
+    background-color: rgb(100, 100, 214);
+    border: 0px solid rgb(149, 0, 0);
+    color: white;
+}

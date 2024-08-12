@@ -27,3 +27,6 @@
     border: 0px solid rgb(149, 0, 0);
     color: white;
 }
+#reader__dashboard_section {
+    padding: 0.5rem !important;
+}

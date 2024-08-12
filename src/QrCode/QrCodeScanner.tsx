@@ -16,10 +16,8 @@ const QrCodeScanner = () => {
         function onError(err: any) {
             console.warn(err);
         }
-        console.log("in");
 
         return () => {
-            console.log("out", scanner);
             try {
                 scanner.clear();
                 scanner.pause();
@@ -29,9 +27,9 @@ const QrCodeScanner = () => {
         };
     }, []);
     return (
-        <div>
+        <div className="mx-auto w-fit">
             <h1>QrCodeScanner</h1>
-            <div id="reader"></div>
+            <div id="reader" className=" sm:w-[400px]"></div>
             <p>{scanResult}</p>
         </div>
     );

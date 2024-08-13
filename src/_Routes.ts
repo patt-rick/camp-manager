@@ -19,17 +19,17 @@ export const AppRoutes: {
         icon: QrCodeIcon,
     },
     {
-        id: "list",
-        name: "Members",
-        url: "/members",
-        component: Dummy,
-        icon: Library,
-    },
-    {
         id: "food",
         name: "Food",
         url: "/food",
         component: Food,
         icon: Utensils,
+    },
+    {
+        id: "list",
+        name: "Members",
+        url: "/members",
+        component: Dummy,
+        icon: Library,
     },
 ];

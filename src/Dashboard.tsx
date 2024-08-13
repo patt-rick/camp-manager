@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar";
 import { AppRoutes } from "./_Routes";
 
@@ -19,6 +19,12 @@ type Props = {
     children: any;
 };
 export function Dashboard(props: Props) {
+    const navigate = useNavigate();
+
+    const logout = () => {
+        localStorage.removeItem("USER_TOKEN");
+        navigate("/login");
+    };
     return (
         <div className="flex min-h-screen w-full flex-col bg-muted/40">
             <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
@@ -109,7 +115,7 @@ export function Dashboard(props: Props) {
                         <DropdownMenuContent align="end">
                             <DropdownMenuLabel>My Account</DropdownMenuLabel>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem>Logout</DropdownMenuItem>
+                            <DropdownMenuItem onClick={logout}>Logout</DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </header>

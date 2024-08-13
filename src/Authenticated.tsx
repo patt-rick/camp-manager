@@ -1,12 +1,18 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { Dashboard } from "./Dashboard";
 import { TooltipProvider } from "./components/ui/tooltip";
 const Authenticate = () => {
+    const location = useLocation();
+    const token = localStorage.getItem("USER_TOKEN");
     return (
         <TooltipProvider>
-            <Dashboard>
-                <Outlet />
-            </Dashboard>
+            {token ? (
+                <Dashboard>
+                    <Outlet />
+                </Dashboard>
+            ) : (
+                <Navigate to="/login" state={{ from: location }} replace />
+            )}
         </TooltipProvider>
     );
 };

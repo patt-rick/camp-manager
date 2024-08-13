@@ -13,8 +13,8 @@ const Food = () => {
     };
     return (
         <div className="">
-            <div className="mx-auto rounded-md bg-muted px-1 py-1 w-fit my-3 sm:mb-0 sm:mx-2">
-                <h1 className="text-xl w-fit font-mono bg-white rounded px-3">Food</h1>
+            <div className="mx-auto rounded-md bg-muted p-1 w-fit my-3 sm:mb-0 sm:mx-6">
+                <h1 className="text-xl w-fit font-mono bg-white rounded px-2">Food</h1>
             </div>
 
             {scanOpen ? (

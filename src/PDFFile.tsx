@@ -1,6 +1,4 @@
 import { Page, Text, View, Document, StyleSheet, Image, Font } from "@react-pdf/renderer";
-import image from "../Assets/background.png";
-import image2 from "../Assets/profile.png";
 
 Font.register({
     family: "Inter",
@@ -40,37 +38,73 @@ Font.register({
     ],
 });
 
-const Card = (props: { name: any; classification: any; branch: any; date: any }) => {
+const Card = (props: {
+    firstName: any;
+    lastName: any;
+    classification: any;
+    gender: any;
+    church: any;
+    code: any;
+}) => {
     return (
         <View style={styles.card}>
-            <View style={styles.main}>
+            <View
+                style={{
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
                 <View style={styles.img}>
-                    <Image src={image2} style={styles.profileImage} />
+                    <Image src={props.code} style={styles.profileImage} />
                 </View>
-                <View style={styles.details}>
+            </View>
+            <View style={styles.details}>
+                <View style={styles.bar}>
+                    <Text>CAMP</Text>
+                </View>
+                <View>
                     <View style={styles.name}>
-                        <Text style={{ fontFamily: "Inter", fontWeight: 600 }}>{props.name}</Text>
-                    </View>
-                    <View style={styles.phone}>
-                        <Text style={{ fontFamily: "Inter", fontWeight: 300 }}>
-                            {props.classification}
+                        <Text style={{ fontFamily: "Inter", fontWeight: 600 }}>
+                            {props.lastName + " " + props.firstName}
                         </Text>
                     </View>
-                    <View style={styles.branch}>
-                        <Text style={{ fontFamily: "Inter", fontWeight: 400 }}>{props.branch}</Text>
+                    <View style={styles.phone}>
+                        <Text style={{ fontFamily: "Inter", fontWeight: 500 }}>{props.church}</Text>
+                    </View>
+                    <View style={styles.down}>
+                        <View>
+                            <Text style={{ fontFamily: "Inter", fontWeight: 300 }}>
+                                {props.classification}
+                            </Text>
+                        </View>
+                        <View style={{ borderRight: "1px solid #ddd" }}></View>
+                        <View>
+                            <Text style={{ fontFamily: "Inter", fontWeight: 300 }}>
+                                {props.gender}
+                            </Text>
+                        </View>
                     </View>
                 </View>
+                <View style={{ marginTop: "15px" }}>
+                    <Text
+                        style={{
+                            fontFamily: "Inter",
+                            fontWeight: 200,
+                            color: "#aaa",
+                            fontSize: "9px",
+                        }}
+                    >
+                        scan QR CODE for your meals
+                    </Text>
+                </View>
             </View>
-            <View style={styles.footer}>
-                <Text
-                    style={{ fontFamily: "Inter", fontWeight: 700 }}
-                >{`Youth Camp ${props.date}`}</Text>
-            </View>
-            <Image fixed src={image} style={styles.backgroundImage} />
         </View>
     );
 };
-export const PDFFile = ({ data, year }: any) => {
+export const PDFFile = ({ data }: any) => {
     const itemsPerPage = 10;
 
     const chunkArray = (arr: any[], size: number) => {
@@ -91,20 +125,17 @@ export const PDFFile = ({ data, year }: any) => {
             {dataChunks.map((chunk: any[], pageIndex: any) => (
                 <Page key={pageIndex}>
                     <View style={styles.flex}>
-                        {chunk.map(
-                            (
-                                person: { name: any; classification: any; temple: any },
-                                index: any
-                            ) => (
-                                <Card
-                                    key={index}
-                                    name={person.name}
-                                    classification={person.classification}
-                                    branch={person.temple}
-                                    date={year}
-                                />
-                            )
-                        )}
+                        {chunk.map((person: any, index: any) => (
+                            <Card
+                                key={index}
+                                firstName={person.first_name}
+                                lastName={person.last_name}
+                                gender={person.gender}
+                                classification={person.classification}
+                                church={"Tema church"}
+                                code={person.code}
+                            />
+                        ))}
                     </View>
                 </Page>
             ))}
@@ -131,10 +162,10 @@ const styles = StyleSheet.create({
         backgroundColor: "#f7f7f7",
         borderRadius: "5px",
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        overflow: "hidden",
+        flexDirection: "row",
+        gap: "10px",
         position: "relative",
+        padding: "10px 0px",
     },
     main: {
         padding: "10px",
@@ -145,18 +176,23 @@ const styles = StyleSheet.create({
         height: "100%",
     },
     img: {
-        height: "70px",
-        width: "70px",
+        height: "90px",
+        width: "90px",
         border: "2px solid #56ba60",
     },
     details: {
-        minWidth: "160px",
-        maxWidth: "170px",
+        minWidth: "150px",
         display: "flex",
         flexDirection: "column",
-        fontSize: "20px",
-        color: "#444",
-        alignItems: "flex-start",
+        flex: 1,
+    },
+    bar: {
+        backgroundColor: "#16a34a",
+        padding: "5px",
+        textAlign: "center",
+        fontWeight: "bold",
+        fontSize: "13px",
+        color: "white",
     },
     footer: {
         height: "30px",
@@ -170,9 +206,9 @@ const styles = StyleSheet.create({
     },
     name: {
         fontSize: "13px",
-        textTransform: "uppercase",
         color: "#222",
         fontWeight: "bold",
+        marginTop: "10px",
     },
     branch: {
         marginTop: "6px",
@@ -183,7 +219,15 @@ const styles = StyleSheet.create({
         textAlign: "left",
         fontSize: "10px",
     },
-    phone: { fontWeight: 300, marginTop: "6px", fontSize: "10px" },
+    phone: { fontWeight: 500, marginTop: "6px", fontSize: "10px" },
+    down: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        gap: "6px",
+        fontSize: "10px",
+        margin: "8px 0px",
+    },
     backgroundImage: {
         width: "100%",
         height: "100%",

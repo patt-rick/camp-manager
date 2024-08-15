@@ -30,3 +30,6 @@
 #reader__dashboard_section {
     padding: 0.5rem !important;
 }
+.card-font {
+    font-family: "Inter";
+}

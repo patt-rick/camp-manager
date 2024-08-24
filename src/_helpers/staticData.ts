@@ -73,3 +73,11 @@ export const Classification: { label: string; value: string }[] = [
     { label: "Young Adult", value: "Young Adult" },
     { label: "Facilitator", value: "Facilitator" },
 ];
+
+export const ClassificationColors = {
+    JHS: "red",
+    SHS: "blue",
+    Tertiary: "green",
+    "Young Adult": "darkorange",
+    Facilitator: "purple",
+};

@@ -1,4 +1,5 @@
 import { Page, Text, View, Document, StyleSheet, Image, Font } from "@react-pdf/renderer";
+import { ClassificationColors } from "./_helpers/staticData";
 
 Font.register({
     family: "Inter",
@@ -55,6 +56,7 @@ const Card = (props: {
                     flexDirection: "column",
                     justifyContent: "center",
                     alignItems: "center",
+                    paddingLeft: "5px",
                 }}
             >
                 <View style={styles.img}>
@@ -62,8 +64,16 @@ const Card = (props: {
                 </View>
             </View>
             <View style={styles.details}>
-                <View style={styles.bar}>
-                    <Text>CAMP</Text>
+                <View
+                    style={{
+                        ...styles.bar,
+                        backgroundColor:
+                            ClassificationColors[
+                                props.classification as keyof typeof ClassificationColors
+                            ],
+                    }}
+                >
+                    <Text>OYC '24</Text>
                 </View>
                 <View>
                     <View style={styles.name}>
@@ -176,8 +186,8 @@ const styles = StyleSheet.create({
         height: "100%",
     },
     img: {
-        height: "90px",
-        width: "90px",
+        height: "100px",
+        width: "100px",
     },
     details: {
         minWidth: "150px",
@@ -186,7 +196,6 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     bar: {
-        backgroundColor: "#16a34a",
         padding: "5px",
         textAlign: "center",
         fontWeight: "bold",

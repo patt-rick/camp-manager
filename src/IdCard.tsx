@@ -1,6 +1,7 @@
 import QrCode from "qrcode.react";
 import { Card } from "./components/ui/card";
 import { Separator } from "./components/ui/separator";
+import { ClassificationColors } from "./_helpers/staticData";
 const IdCard = (props: any) => {
     const { qr_hash, first_name, last_name, church, gender, classification, id } = props.data;
     return (
@@ -9,7 +10,17 @@ const IdCard = (props: any) => {
                 <QrCode id={id} value={qr_hash} size={200} />
             </div>
             <div className="flex flex-col justify-between flex-1">
-                <div className=" bg-primary  p-3 text-white text-center font-bold">CAMP</div>
+                <div
+                    style={{
+                        backgroundColor:
+                            ClassificationColors[
+                                props.classification as keyof typeof ClassificationColors
+                            ],
+                    }}
+                    className="p-3 text-white text-center font-bold"
+                >
+                    OYC '24
+                </div>
                 <div className="">
                     <div className="w-full my-2">
                         <p className="font-bold w-full text-xl">{first_name + " " + last_name}</p>

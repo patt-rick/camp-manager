@@ -25,11 +25,10 @@ export function Login() {
     const handleLogin = async () => {
         setLoading(true);
         let resp: any = await makeLoginRequest({ email, password });
-        console.log(resp);
         if (resp.error) {
             toast({ title: "Error", description: resp.error, variant: "destructive" });
         } else {
-            localStorage.setItem("USER_TOKEN", JSON.stringify(resp.data?.access_token));
+            sessionStorage.setItem("USER_TOKEN", JSON.stringify(resp.data?.access_token));
             navigate("/");
             toast({ title: "Success", description: "You are now logged in." });
         }

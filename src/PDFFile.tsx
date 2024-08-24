@@ -178,7 +178,6 @@ const styles = StyleSheet.create({
     img: {
         height: "90px",
         width: "90px",
-        border: "2px solid #56ba60",
     },
     details: {
         minWidth: "150px",
@@ -205,7 +204,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     name: {
-        fontSize: "13px",
+        fontSize: "12px",
         color: "#222",
         fontWeight: "bold",
         marginTop: "10px",

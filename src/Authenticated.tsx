@@ -3,7 +3,7 @@ import { Dashboard } from "./Dashboard";
 import { TooltipProvider } from "./components/ui/tooltip";
 const Authenticate = () => {
     const location = useLocation();
-    const token = localStorage.getItem("USER_TOKEN");
+    const token = sessionStorage.getItem("USER_TOKEN");
     return (
         <TooltipProvider>
             {token ? (

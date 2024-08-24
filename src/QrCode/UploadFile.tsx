@@ -7,13 +7,15 @@ import { registerLocale } from "react-datepicker";
 import enGB from "date-fns/locale/en-GB";
 
 import "react-datepicker/dist/react-datepicker.css";
-import { Label } from "./components/ui/label";
-import { Button } from "./components/ui/button";
+import { Label } from "../components/ui/label";
+import { Button } from "../components/ui/button";
+import { uploadCampersListFromCSV } from "./_helpers";
+import { toast } from "@/components/ui/use-toast";
 
 // Register the locale
 registerLocale("en-GB", enGB);
 
-const UploadCSV = ({ setData, onGenerate }: any) => {
+const UploadCSV = ({ setData, onGenerate, setLoading }: any) => {
     const handleFileUpload = (event: { target: { files: any[] } }) => {
         const file = event.target.files[0];
         if (file && file.type !== "text/csv") {
@@ -22,8 +24,17 @@ const UploadCSV = ({ setData, onGenerate }: any) => {
         }
         Papa.parse(file, {
             header: true,
-            complete: function (results: { data: any }) {
-                setData(results.data);
+            complete: async function (results: { data: any }) {
+                results.data.pop();
+                setLoading(true);
+                let resp: any = await uploadCampersListFromCSV(results.data);
+                if (resp.error) {
+                    toast({ title: "Error", description: resp.error, variant: "destructive" });
+                } else {
+                    setData(resp.data);
+                    toast({ description: "Success" });
+                }
+                setLoading(false);
             },
         });
     };

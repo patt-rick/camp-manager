@@ -22,7 +22,7 @@ export function Dashboard(props: Props) {
     const navigate = useNavigate();
 
     const logout = () => {
-        localStorage.removeItem("USER_TOKEN");
+        sessionStorage.removeItem("USER_TOKEN");
         navigate("/login");
     };
     return (

@@ -44,7 +44,7 @@ const ScanToEat = (props: ScanProps) => {
             setToScan(false);
 
             const updatedFoodOptions = foodOptions.map((food: any) => {
-                if (resp.data.food === foodChoice.food) {
+                if (resp.data.food === food.food) {
                     return { ...food, quantity: resp.data.quantity };
                 }
                 return food;

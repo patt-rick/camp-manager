@@ -45,8 +45,8 @@ export function ListTable({ list }: TableProps) {
                     <TableRow className="font-bold text-black">
                         <TableHead className="font-bold">Food</TableHead>
                         <TableHead className="font-bold">Type</TableHead>
-                        <TableHead className="font-bold">Acquired from</TableHead>
                         <TableHead className="font-bold text-center">Quantity</TableHead>
+                        <TableHead className="font-bold">Acquired from</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -54,8 +54,8 @@ export function ListTable({ list }: TableProps) {
                         <TableRow key={list.id}>
                             <TableCell className="font-medium">{list.food}</TableCell>
                             <TableCell>{capitalize(list.food_type)}</TableCell>
-                            <TableCell>{list.acquired_from}</TableCell>
                             <TableCell className="text-center">{list.quantity}</TableCell>
+                            <TableCell>{list.acquired_from}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

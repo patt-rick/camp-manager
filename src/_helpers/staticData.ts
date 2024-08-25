@@ -81,3 +81,9 @@ export const ClassificationColors = {
     "Young Adult": "darkorange",
     Facilitator: "purple",
 };
+
+export const FoodType: { label: string; value: string }[] = [
+    { label: "Breakfast", value: "breakfast" },
+    { label: "Lunch", value: "lunch" },
+    { label: "Supper", value: "supper" },
+];

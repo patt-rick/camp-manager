@@ -10,6 +10,8 @@ import { Churches, Classification, Gender } from "@/_helpers/staticData";
 import { uploadSingleCamper } from "./_helpers";
 import { Loader } from "@/Loader";
 import { toast } from "@/components/ui/use-toast";
+import { downloadPdf } from "@/_helpers/utilites";
+import { PDFFile } from "@/PDFFile";
 
 function QrCodeGenerator() {
     const [firstName, setFirstName] = useState("");
@@ -19,11 +21,12 @@ function QrCodeGenerator() {
     const [classification, setClassification] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [qrIsVisible, setQrIsVisible] = useState<string | null>(null);
-    const [data, setData] = useState({});
+    const [data, setData] = useState<any>({});
     const handleQrCodeGenerator = async () => {
+        const campId = sessionStorage.getItem("CAMP_ID") || "1";
         setIsLoading(true);
         let resp: any = await uploadSingleCamper({
-            camp_id: 1,
+            camp_id: parseInt(campId),
             first_name: firstName,
             last_name: lastName,
             gender,
@@ -40,6 +43,19 @@ function QrCodeGenerator() {
         }
         setIsLoading(false);
     };
+
+    const printCard = () => {
+        let newData = {
+            first_name: data.first_name,
+            last_name: data.last_name,
+            gender: data.gender,
+            classification: data.classification,
+            church: data.church,
+            code: (document as any).getElementById(data.id).toDataURL(),
+        };
+        downloadPdf(<PDFFile data={[newData]} year={new Date()} />, "Single Card", false, () => {});
+    };
+
     if (isLoading)
         return (
             <div className="h-[500px] grid place-items-center">
@@ -116,7 +132,14 @@ function QrCodeGenerator() {
                     </Card>
                 </div>
 
-                {!!qrIsVisible && <IdCard data={data} />}
+                {!!qrIsVisible && (
+                    <div className="">
+                        <IdCard data={data} />
+                        <Button className="max-w-lg" onClick={printCard}>
+                            Print Card
+                        </Button>
+                    </div>
+                )}
             </div>
         </div>
     );

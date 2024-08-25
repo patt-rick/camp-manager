@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import QrCodeScanner from "@/QrCode/QrCodeScanner";
 import { Coffee, CookingPot, UtensilsCrossed } from "lucide-react";
 import React from "react";
+import ScanToEat from "./ScanToEat";
 
 const Food = () => {
     const [value, setValue] = React.useState<string>("");
@@ -14,18 +14,14 @@ const Food = () => {
     return (
         <div className="">
             <div className="mx-auto rounded-md bg-muted p-1 w-fit my-3 sm:mb-0 sm:mx-6">
-                <h1 className="text-xl w-fit font-mono bg-white rounded px-2">Food</h1>
+                <h1 className="text-xl w-fit  bg-white rounded px-2">Food Collection</h1>
             </div>
+            <h3 className="text-center font-bold text-xl my-3">
+                {` ${String(new Date()).substring(0, 15)}`}
+            </h3>
 
             {scanOpen ? (
-                <div className="flex flex-col justify-center">
-                    <QrCodeScanner />
-                    <div className="mt-6 flex justify-center">
-                        <Button onClick={() => setScanOpen(false)} variant={"destructive"}>
-                            Exit scan
-                        </Button>
-                    </div>
-                </div>
+                <ScanToEat onScanExit={() => setScanOpen(false)} foodType={value} />
             ) : (
                 <div className="  grid place-items-center">
                     <div className="">

@@ -7,14 +7,14 @@ const IdCard = (props: any) => {
     return (
         <Card className="card-font flex flex-wrap gap-6 my-3 p-4 pr-0 max-w-lg ">
             <div className="">
-                <QrCode id={id} value={qr_hash} size={200} />
+                <QrCode id={id} value={JSON.stringify({ qr_hash, id })} size={200} />
             </div>
             <div className="flex flex-col justify-between flex-1">
                 <div
                     style={{
                         backgroundColor:
                             ClassificationColors[
-                                props.classification as keyof typeof ClassificationColors
+                                classification as keyof typeof ClassificationColors
                             ],
                     }}
                     className="p-3 text-white text-center font-bold"

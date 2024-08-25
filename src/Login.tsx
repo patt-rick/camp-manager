@@ -29,6 +29,7 @@ export function Login() {
             toast({ title: "Error", description: resp.error, variant: "destructive" });
         } else {
             sessionStorage.setItem("USER_TOKEN", JSON.stringify(resp.data?.access_token));
+            sessionStorage.setItem("CAMP_ID", JSON.stringify(resp.data?.camp_id));
             navigate("/");
             toast({ title: "Success", description: "You are now logged in." });
         }

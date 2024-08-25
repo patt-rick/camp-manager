@@ -61,7 +61,7 @@ export function getSecureAxiosInstance(): any {
     }
     const currentUser = getCurrentlyLoggedInUser();
     if (currentUser) {
-        return instance(currentUser.authToken);
+        return instance(currentUser);
     }
     throw new Error("Attempting to securely connect to api when there is no active user!");
 }

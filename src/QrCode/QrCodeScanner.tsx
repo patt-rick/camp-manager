@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 
-const QrCodeScanner = () => {
-    const [scanResult, setScanResult] = useState<string | null>(null);
-
+type ScannerProps = {
+    onGetResults: (result: string) => void;
+};
+const QrCodeScanner = (props: ScannerProps) => {
     useEffect(() => {
         const scanner = new Html5QrcodeScanner("reader", { fps: 1, qrbox: 250 }, true);
 
@@ -11,7 +12,7 @@ const QrCodeScanner = () => {
 
         function onSuccess(result: string) {
             scanner.clear();
-            setScanResult(result);
+            props.onGetResults(JSON.parse(result));
         }
         function onError(err: any) {
             console.warn(err);
@@ -30,7 +31,6 @@ const QrCodeScanner = () => {
         <div className="mx-auto w-fit">
             <h1>QrCodeScanner</h1>
             <div id="reader" className=" sm:w-[400px]"></div>
-            <p>{scanResult}</p>
         </div>
     );
 };

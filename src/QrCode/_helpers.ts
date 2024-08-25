@@ -1,4 +1,4 @@
-import { apiPost } from "@/_helpers/apiService";
+import { apiGet, apiPost } from "@/_helpers/apiService";
 import { Endpoints } from "@/_helpers/constants";
 
 export async function uploadCampersListFromCSV(data: any) {
@@ -17,6 +17,15 @@ export async function uploadSingleCamper(data: any) {
         let resp: any = await apiPost(Endpoints.CAMPER_CREATE, {
             data,
         });
+        return resp;
+    } catch (error) {
+        return { error: "Something went wrong. Please contact administrator" };
+    }
+}
+
+export async function getSingleCamperDetails(id: string) {
+    try {
+        let resp: any = await apiGet(Endpoints.CAMPERS + id + "/");
         return resp;
     } catch (error) {
         return { error: "Something went wrong. Please contact administrator" };

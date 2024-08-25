@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 
 type ScannerProps = {
-    onGetResults: (result: string) => void;
+    onGetResults: (result: { qr_hash: string; id: string }) => void;
 };
 const QrCodeScanner = (props: ScannerProps) => {
     useEffect(() => {

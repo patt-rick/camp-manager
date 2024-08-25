@@ -44,9 +44,6 @@ const FoodStorage = () => {
         );
     return (
         <div>
-            <div className="mx-auto rounded-md bg-muted p-1 w-fit my-3  sm:mx-3 mb-3">
-                <h1 className="text-lg w-fit  bg-white rounded px-2">Food Storage</h1>
-            </div>
             {map(availableFoods, (data: any, key: number) => (
                 <Card key={key} className="max-w-lg p-5 mx-3 mb-3">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-3">

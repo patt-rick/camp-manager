@@ -2,7 +2,7 @@ import { Library, PackageOpen, QrCode as QrCodeIcon, Utensils } from "lucide-rea
 import Dummy from "./Dummy";
 import QrCode from "./QrCode/QrCode";
 import Food from "./Food/Food";
-import FoodStorage from "./Food/FoodStorage";
+import Storage from "./Food/Storage";
 
 export const AppRoutes: {
     id: string;
@@ -30,7 +30,7 @@ export const AppRoutes: {
         id: "food-storage",
         name: "Food Storage",
         url: "/food-storage",
-        component: FoodStorage,
+        component: Storage,
         icon: PackageOpen,
     },
     {

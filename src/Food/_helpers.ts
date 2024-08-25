@@ -31,3 +31,8 @@ export async function saveFoodStorageToServer(data: any) {
         return { error: error.response.data.message };
     }
 }
+
+export async function getFoodSupplies(date: any, campId: number) {
+    let resp: any = await apiGet(Endpoints.FOOD_STORAGE + `?date_taken=${date}&camp_id=${campId}`);
+    return resp;
+}

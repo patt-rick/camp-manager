@@ -5,4 +5,5 @@ export const Endpoints = {
     CAMPERS_CREATE_BULK: "/campers-multiple/",
     FOOD_STORAGE: "/food-storage/",
     FOOD_ALLOCATION: "/food-allocations/",
+    CAMPERS: "/campers/",
 };

@@ -1,8 +1,8 @@
-import { Library, PackageOpen, QrCode as QrCodeIcon, Utensils } from "lucide-react";
-import Dummy from "./Dummy";
+import { PackageOpen, QrCode as QrCodeIcon, Users, Utensils } from "lucide-react";
 import QrCode from "./QrCode/QrCode";
 import Food from "./Food/Food";
 import Storage from "./Food/Storage";
+import Members from "./Members/Members";
 
 export const AppRoutes: {
     id: string;
@@ -37,7 +37,7 @@ export const AppRoutes: {
         id: "list",
         name: "Members",
         url: "/members",
-        component: Dummy,
-        icon: Library,
+        component: Members,
+        icon: Users,
     },
 ];

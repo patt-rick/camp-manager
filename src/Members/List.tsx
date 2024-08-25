@@ -11,12 +11,12 @@ import {
 import {
     Pagination,
     PaginationContent,
+    PaginationEllipsis,
     PaginationItem,
     PaginationLink,
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination";
-import { capitalize } from "lodash";
 import { Card, CardTitle } from "@/components/ui/card";
 
 type TableProps = {
@@ -37,30 +37,29 @@ export function List({ list }: TableProps) {
     };
 
     return (
-        <Card className="p-4">
-            <CardTitle className="pl-2 mb-3">{"Campers"}</CardTitle>
+        <Card className="p-4 m-4">
+            <CardTitle className="pl-2 mb-3">{"Campers List"}</CardTitle>
             <Table className="">
                 <TableCaption>A list of your campers.</TableCaption>
                 <TableHeader>
                     <TableRow className="font-bold text-black">
-                        <TableHead className="font-bold">Food</TableHead>
-                        <TableHead className="font-bold">Type</TableHead>
-                        <TableHead className="font-bold">Acquired from</TableHead>
-                        <TableHead className="font-bold text-center">Quantity</TableHead>
+                        <TableHead className="font-bold">Name</TableHead>
+                        <TableHead className="font-bold">Church</TableHead>
+                        <TableHead className="font-bold">Classification</TableHead>
+                        <TableHead className="font-bold text-center">Gender</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
                     {currentList.map((list) => (
                         <TableRow key={list.id}>
-                            <TableCell className="font-medium">{list.food}</TableCell>
-                            <TableCell>{capitalize(list.food_type)}</TableCell>
-                            <TableCell>{list.acquired_from}</TableCell>
-                            <TableCell className="text-center">{list.quantity}</TableCell>
+                            <TableCell className="font-medium">{`${list.last_name}, ${list.first_name}`}</TableCell>
+                            <TableCell>{list.church}</TableCell>
+                            <TableCell>{list.classification}</TableCell>
+                            <TableCell className="text-center">{list.gender}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
-
             <div className="mt-4">
                 <Pagination>
                     <PaginationContent>
@@ -72,16 +71,7 @@ export function List({ list }: TableProps) {
                                 }
                             />
                         </PaginationItem>
-                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                            <PaginationItem key={page}>
-                                <PaginationLink
-                                    onClick={() => handlePageChange(page)}
-                                    isActive={currentPage === page}
-                                >
-                                    {page}
-                                </PaginationLink>
-                            </PaginationItem>
-                        ))}
+                        {renderPaginationItems()}
                         <PaginationItem>
                             <PaginationNext
                                 onClick={() =>
@@ -99,4 +89,38 @@ export function List({ list }: TableProps) {
             </div>
         </Card>
     );
+    function renderPaginationItems() {
+        const items = [];
+        const ellipsisThreshold = 1;
+
+        for (let i = 1; i <= totalPages; i++) {
+            if (
+                i === 1 ||
+                i === totalPages ||
+                (i >= currentPage - ellipsisThreshold && i <= currentPage + ellipsisThreshold)
+            ) {
+                items.push(
+                    <PaginationItem key={i}>
+                        <PaginationLink
+                            onClick={() => handlePageChange(i)}
+                            isActive={currentPage === i}
+                        >
+                            {i}
+                        </PaginationLink>
+                    </PaginationItem>
+                );
+            } else if (
+                (i === currentPage - ellipsisThreshold - 1 && i > 2) ||
+                (i === currentPage + ellipsisThreshold + 1 && i < totalPages - 1)
+            ) {
+                items.push(
+                    <PaginationItem key={i}>
+                        <PaginationEllipsis />
+                    </PaginationItem>
+                );
+            }
+        }
+
+        return items;
+    }
 }

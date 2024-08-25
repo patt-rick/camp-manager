@@ -9,7 +9,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Link, useNavigate } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar";
@@ -83,14 +83,16 @@ export function Dashboard(props: Props) {
                             <nav className="grid gap-6 text-lg font-medium">
                                 <span className="px-2.5">Camp Manager</span>
                                 {AppRoutes.map((route) => (
-                                    <Link
-                                        key={route.id}
-                                        to={route.url}
-                                        className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                                    >
-                                        <route.icon className="h-5 w-5" />
-                                        {route.name}
-                                    </Link>
+                                    <SheetClose asChild>
+                                        <Link
+                                            key={route.id}
+                                            to={route.url}
+                                            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                                        >
+                                            <route.icon className="h-5 w-5" />
+                                            {route.name}
+                                        </Link>
+                                    </SheetClose>
                                 ))}
                             </nav>
                         </SheetContent>

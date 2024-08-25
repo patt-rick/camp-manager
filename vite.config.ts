@@ -15,4 +15,7 @@ export default defineConfig({
         host: "localhost",
         port: 3060,
     },
+    build: {
+        outDir: "build",
+    },
 });

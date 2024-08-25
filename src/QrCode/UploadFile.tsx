@@ -1,19 +1,10 @@
 // @ts-ignore
-import DatePicker from "react-datepicker";
-// @ts-ignore
 import Papa from "papaparse";
-// @ts-ignore
-import { registerLocale } from "react-datepicker";
-import enGB from "date-fns/locale/en-GB";
 
-import "react-datepicker/dist/react-datepicker.css";
 import { Label } from "../components/ui/label";
 import { Button } from "../components/ui/button";
 import { uploadCampersListFromCSV } from "./_helpers";
 import { toast } from "@/components/ui/use-toast";
-
-// Register the locale
-registerLocale("en-GB", enGB);
 
 const UploadCSV = ({ setData, onGenerate, setLoading }: any) => {
     const handleFileUpload = (event: { target: { files: any[] } }) => {
@@ -38,12 +29,6 @@ const UploadCSV = ({ setData, onGenerate, setLoading }: any) => {
             },
         });
     };
-
-    // const getYear = (date: string | number | Date) => {
-    //     const dateObject = new Date(date);
-    //     const year = dateObject.getFullYear();
-    //     return year;
-    // };
 
     return (
         <div className="fileWrapper flex flex-col gap-5">

@@ -4,7 +4,7 @@ import { MapPin, Link as LinkIcon } from "lucide-react";
 
 export default function ProfilePage({ data }: any) {
     return (
-        <div className="max-w-2xl mx-auto bg-background">
+        <div className=" bg-background">
             <div className="relative">
                 <div className="h-48 overflow-hidden rounded-t-lg profile-bg">
                     {/* <img
@@ -32,7 +32,7 @@ export default function ProfilePage({ data }: any) {
                         <p className="text-muted-foreground">{data.classification}</p>
                     </div>
 
-                    <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground sm:min-w-[500px]">
+                    <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground w-full">
                         <div className="flex items-center">
                             <MapPin className="mr-1 h-4 w-4" />
                             Room number 132
@@ -53,7 +53,7 @@ export default function ProfilePage({ data }: any) {
                         </div> */}
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-2 text-center">
                         <h2 className="text-lg font-semibold">Church</h2>
                         <p className="text-muted-foreground">{data.church}</p>
                     </div>

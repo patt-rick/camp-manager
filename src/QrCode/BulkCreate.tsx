@@ -31,12 +31,17 @@ const BulkCreate = () => {
         );
     return (
         <div>
-            <UploadCSV onGenerate={generatePDF} setData={setData} setLoading={setIsLoading} />
+            <UploadCSV
+                disabled={data.length < 1}
+                onGenerate={generatePDF}
+                setData={setData}
+                setLoading={setIsLoading}
+            />
 
             <div className="mt-5">
                 <h4 className="font-bold">List</h4>
                 {data.length > 0 ? (
-                    <div id="ids" className="grid grid-cols-1 lg:grid-cols-2">
+                    <div id="ids" className="flex flex-wrap gap-3">
                         {data.map((item: any, index: number) => (
                             <IdCard key={index} data={item} />
                         ))}

@@ -48,15 +48,14 @@ const Card = (props: {
     code: any;
 }) => {
     return (
-        <View style={styles.card}>
+        <View wrap={false} style={styles.card}>
             <View
                 style={{
-                    height: "100%",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
                     alignItems: "center",
-                    paddingLeft: "5px",
+                    padding: "5px",
                 }}
             >
                 <View style={styles.img}>
@@ -73,9 +72,9 @@ const Card = (props: {
                             ],
                     }}
                 >
-                    <Text>OYC '24</Text>
+                    <Text style={{ fontFamily: "Inter", fontWeight: 600 }}>OYC '24</Text>
                 </View>
-                <View>
+                <View style={{ textAlign: "center", padding: "2px" }}>
                     <View style={styles.name}>
                         <Text style={{ fontFamily: "Inter", fontWeight: 600 }}>
                             {props.lastName + " " + props.firstName}
@@ -90,7 +89,7 @@ const Card = (props: {
                                 {props.classification}
                             </Text>
                         </View>
-                        <View style={{ borderRight: "1px solid #ddd" }}></View>
+                        <View style={{ borderRight: "1px solid #ddd", height: "12px" }}></View>
                         <View>
                             <Text style={{ fontFamily: "Inter", fontWeight: 300 }}>
                                 {props.gender}
@@ -98,7 +97,7 @@ const Card = (props: {
                         </View>
                     </View>
                 </View>
-                <View style={{ marginTop: "15px" }}>
+                <View style={{ marginTop: "10px", textAlign: "center", paddingBottom: "4px" }}>
                     <Text
                         style={{
                             fontFamily: "Inter",
@@ -115,40 +114,23 @@ const Card = (props: {
     );
 };
 export const PDFFile = ({ data }: any) => {
-    const itemsPerPage = 10;
-
-    const chunkArray = (arr: any[], size: number) => {
-        return arr.reduce((chunks: any, item: any, i: number) => {
-            if (i % size === 0) {
-                chunks.push([item]);
-            } else {
-                chunks[chunks.length - 1].push(item);
-            }
-            return chunks;
-        }, []);
-    };
-
-    const dataChunks = chunkArray(data, itemsPerPage);
-
     return (
         <Document>
-            {dataChunks.map((chunk: any[], pageIndex: any) => (
-                <Page key={pageIndex}>
-                    <View style={styles.flex}>
-                        {chunk.map((person: any, index: any) => (
-                            <Card
-                                key={index}
-                                firstName={person.first_name}
-                                lastName={person.last_name}
-                                gender={person.gender}
-                                classification={person.classification}
-                                church={"Tema church"}
-                                code={person.code}
-                            />
-                        ))}
-                    </View>
-                </Page>
-            ))}
+            <Page>
+                <View style={styles.flex}>
+                    {data.map((person: any, index: any) => (
+                        <Card
+                            key={index}
+                            firstName={person.first_name}
+                            lastName={person.last_name}
+                            gender={person.gender}
+                            classification={person.classification}
+                            church={person.church}
+                            code={person.code}
+                        />
+                    ))}
+                </View>
+            </Page>
         </Document>
     );
 };
@@ -159,7 +141,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         flexWrap: "wrap",
         justifyContent: "center",
-        gap: "5px",
+        gap: "3px",
     },
     profileImage: {
         height: "100%",
@@ -167,15 +149,13 @@ const styles = StyleSheet.create({
     },
     card: {
         margin: "10px",
-        width: "260px",
-        height: "140px",
+        width: "150px",
+        height: "260px",
         backgroundColor: "#f7f7f7",
         borderRadius: "5px",
         display: "flex",
-        flexDirection: "row",
-        gap: "10px",
-        position: "relative",
-        padding: "10px 0px",
+        flexDirection: "column",
+        gap: "8px",
     },
     main: {
         padding: "10px",
@@ -186,21 +166,24 @@ const styles = StyleSheet.create({
         height: "100%",
     },
     img: {
-        height: "100px",
-        width: "100px",
+        height: "110px",
+        width: "110px",
+        margin: "5px auto",
     },
     details: {
-        minWidth: "150px",
         display: "flex",
         flexDirection: "column",
         flex: 1,
     },
     bar: {
-        padding: "5px",
         textAlign: "center",
-        fontWeight: "bold",
+        fontWeight: "ultrabold",
         fontSize: "13px",
         color: "white",
+        height: "35px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
     },
     footer: {
         height: "30px",
@@ -216,7 +199,7 @@ const styles = StyleSheet.create({
         fontSize: "12px",
         color: "#222",
         fontWeight: "bold",
-        marginTop: "10px",
+        margin: "10px 0px",
     },
     branch: {
         marginTop: "6px",
@@ -231,7 +214,8 @@ const styles = StyleSheet.create({
     down: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "flex-start",
+        justifyContent: "center",
+        alignItems: "stretch",
         gap: "6px",
         fontSize: "10px",
         margin: "8px 0px",

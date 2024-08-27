@@ -6,7 +6,7 @@ import { Button } from "../components/ui/button";
 import { uploadCampersListFromCSV } from "./_helpers";
 import { toast } from "@/components/ui/use-toast";
 
-const UploadCSV = ({ setData, onGenerate, setLoading }: any) => {
+const UploadCSV = ({ setData, onGenerate, setLoading, disabled }: any) => {
     const handleFileUpload = (event: { target: { files: any[] } }) => {
         const file = event.target.files[0];
         if (file && file.type !== "text/csv") {
@@ -47,7 +47,9 @@ const UploadCSV = ({ setData, onGenerate, setLoading }: any) => {
                 >
                     Upload CSV File
                 </Label>
-                <Button onClick={onGenerate}>Print ID Cards</Button>
+                <Button disabled={disabled} onClick={onGenerate}>
+                    Print ID Cards
+                </Button>
             </div>
         </div>
     );

@@ -1,8 +1,10 @@
+import { ClassificationColors } from "@/_helpers/staticData";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Link as LinkIcon } from "lucide-react";
+import { Button } from "../ui/button";
 
-export default function ProfilePage({ data }: any) {
+export default function ProfilePage({ data, onPrintCard }: any) {
     return (
         <div className=" bg-background">
             <div className="relative">
@@ -29,7 +31,17 @@ export default function ProfilePage({ data }: any) {
                 <CardContent className="space-y-6">
                     <div className="text-center space-y-2">
                         <h1 className="text-2xl font-bold">{`${data.last_name} ${data.first_name}`}</h1>
-                        <p className="text-muted-foreground">{data.classification}</p>
+                        <p
+                            style={{
+                                backgroundColor:
+                                    ClassificationColors[
+                                        data.classification as keyof typeof ClassificationColors
+                                    ],
+                            }}
+                            className="text-muted-foreground w-fit text-white m-auto px-4 py-1 rounded-full"
+                        >
+                            {data.classification}
+                        </p>
                     </div>
 
                     <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground w-full">
@@ -82,6 +94,13 @@ export default function ProfilePage({ data }: any) {
                             ))}
                         </div>
                     </div> */}
+                    {onPrintCard && (
+                        <div className="text-center">
+                            <Button onClick={onPrintCard} variant="outline">
+                                Print card
+                            </Button>
+                        </div>
+                    )}
                 </CardContent>
             </Card>
         </div>

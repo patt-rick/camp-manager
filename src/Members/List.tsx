@@ -21,8 +21,9 @@ import { Card, CardTitle } from "@/components/ui/card";
 
 type TableProps = {
     list: any[];
+    onViewCamper: (data: any) => void;
 };
-export function List({ list }: TableProps) {
+export function List({ list, onViewCamper }: TableProps) {
     const itemsPerPage = 10;
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -51,7 +52,7 @@ export function List({ list }: TableProps) {
                 </TableHeader>
                 <TableBody>
                     {currentList.map((list) => (
-                        <TableRow key={list.id}>
+                        <TableRow onClick={() => onViewCamper(list)} key={list.id}>
                             <TableCell className="font-medium">{`${list.last_name}, ${list.first_name}`}</TableCell>
                             <TableCell>{list.church}</TableCell>
                             <TableCell>{list.classification}</TableCell>

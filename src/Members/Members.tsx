@@ -11,6 +11,7 @@ import QrCode from "qrcode.react";
 const Members = () => {
     const campId = sessionStorage.getItem("CAMP_ID");
     const [isLoading, setIsLoading] = useState(false);
+    const [allList, setAllList] = useState<any[]>([]);
     const [campList, setCampList] = useState<any[]>([]);
     const [camper, setCamper] = useState<any>({});
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -20,6 +21,7 @@ const Members = () => {
         getLisOfCampers(Number(campId))
             .then((data) => {
                 setCampList(data);
+                setAllList(data);
             })
             .finally(() => setIsLoading(false));
     }, []);
@@ -45,6 +47,18 @@ const Members = () => {
             () => {}
         );
     };
+    const search = (searchString: string) => {
+        if (searchString === "") {
+            setCampList(allList);
+        } else {
+            const searchResults = allList.filter(
+                (camper) =>
+                    camper.first_name.toLowerCase().includes(searchString.toLowerCase()) ||
+                    camper.last_name.toLowerCase().includes(searchString.toLowerCase())
+            );
+            setCampList(searchResults);
+        }
+    };
 
     if (isLoading)
         return (
@@ -67,7 +81,7 @@ const Members = () => {
                     <ProfilePage data={camper} onPrintCard={printCard} />
                 </DrawerContent>
             </Drawer>
-            <List onViewCamper={viewCamper} list={campList} />
+            <List onSearch={search} onViewCamper={viewCamper} list={campList} />
         </div>
     );
 };

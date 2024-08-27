@@ -18,12 +18,15 @@ import {
     PaginationPrevious,
 } from "@/components/ui/pagination";
 import { Card, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 
 type TableProps = {
     list: any[];
     onViewCamper: (data: any) => void;
+    onSearch: (searchString: string) => void;
+    // searchTerm: string;
 };
-export function List({ list, onViewCamper }: TableProps) {
+export function List({ list, onViewCamper, onSearch }: TableProps) {
     const itemsPerPage = 10;
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -40,6 +43,11 @@ export function List({ list, onViewCamper }: TableProps) {
     return (
         <Card className="p-4 m-4">
             <CardTitle className="pl-2 mb-3">{"Campers List"}</CardTitle>
+            <Input
+                placeholder="Search names..."
+                onChange={(event) => onSearch(event.target.value)}
+                className="max-w-sm"
+            />
             <Table className="">
                 <TableCaption>A list of your campers.</TableCaption>
                 <TableHeader>

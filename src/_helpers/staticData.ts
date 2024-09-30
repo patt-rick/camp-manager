@@ -1,65 +1,38 @@
 export const Churches: { label: string; value: string }[] = [
-    {
-        value: "2",
-        label: "Shalom Temple",
-    },
-    {
-        value: "3",
-        label: "Faith Temple",
-    },
-    {
-        value: "4",
-        label: "Miracle Temple",
-    },
-    {
-        value: "5",
-        label: "Everlasting Life Temple",
-    },
-    {
-        value: "6",
-        label: "Strong Tower",
-    },
-    {
-        value: "7",
-        label: "The Lord'S Tabernacle",
-    },
-    {
-        value: "8",
-        label: "Cornerstone Temple",
-    },
-    {
-        value: "9",
-        label: "Pleasant Assembly",
-    },
-    {
-        value: "10",
-        label: "Resurrection Temple",
-    },
-    {
-        value: "11",
-        label: "Divine Temple",
-    },
-    {
-        value: "12",
-        label: "Rehoboth Temple",
-    },
-    {
-        value: "13",
-        label: "Joy Temple",
-    },
-    {
-        value: "14",
-        label: "Revival Temple",
-    },
-    {
-        value: "15",
-        label: "Victory Temple",
-    },
-    {
-        value: "1",
-        label: "Other",
-    },
-];
+    { value: "16", label: "Divine Temple" },
+    { value: "17", label: "El-Rehoboth Temple" },
+    { value: "18", label: "Elites Temple" },
+    { value: "19", label: "Freedom Temple" },
+    { value: "20", label: "ICGC" },
+    { value: "21", label: "Light House International" },
+    { value: "22", label: "Light Temple" },
+    { value: "23", label: "Maranatha Methodist Church" },
+    { value: "24", label: "Cornerstone Temple" },
+    { value: "25", label: "Everlasting Life Temple" },
+    { value: "26", label: "Faith Temple" },
+    { value: "27", label: "Gateway Sanctuary" },
+    { value: "28", label: "Joy Temple" },
+    { value: "29", label: "Miracle Temple" },
+    { value: "30", label: "Pleasant Assembly" },
+    { value: "31", label: "Rehoboth Temple" },
+    { value: "32", label: "Resurrection Temple" },
+    { value: "33", label: "Revival Temple" },
+    { value: "34", label: "Shalom Temple" },
+    { value: "35", label: "Strong Tower" },
+    { value: "36", label: "Tantra Hill Assembly" },
+    { value: "37", label: "The Lord'S Tabernacle" },
+    { value: "38", label: "Victory Temple" },
+    { value: "39", label: "Worship Temple" },
+    { value: "40", label: "Newlife Temple" },
+    { value: "41", label: "Open Heavens Temple" },
+    { value: "42", label: "Rock Temple" },
+    { value: "43", label: "Seekers Temple" },
+    { value: "44", label: "Sun City Assembly" },
+    { value: "45", label: "The Lord's Sanctuary" },
+    { value: "46", label: "The New Wine Temple" },
+    { value: "47", label: "Triumph Temple" }
+]
+;
 
 export const Gender: { label: string; value: string }[] = [
     { label: "Male", value: "Male" },

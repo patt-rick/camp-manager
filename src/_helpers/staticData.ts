@@ -71,15 +71,21 @@ export const Classification: { label: string; value: string }[] = [
     { label: "SHS", value: "SHS" },
     { label: "Tertiary", value: "Tertiary" },
     { label: "Young Adult", value: "Young Adult" },
+    { label: "New Breed Member", value: "New Breed Member" },
+    { label: "New Breed Leader", value: "New Breed Leader" },
     { label: "Facilitator", value: "Facilitator" },
+    { label: "Pastor", value: "Pastor" },
 ];
 
 export const ClassificationColors = {
-    JHS: "red",
+    JHS: "coral",
     SHS: "blue",
     Tertiary: "green",
     "Young Adult": "darkorange",
     Facilitator: "purple",
+    Pastor: "red",
+    "New Breed Leader": "black",
+    "New Breed Member": "blueblack",
 };
 
 export const FoodType: { label: string; value: string }[] = [

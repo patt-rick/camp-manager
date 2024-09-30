@@ -31,7 +31,7 @@ function QrCodeGenerator() {
             last_name: lastName,
             gender,
             classification,
-            church_id: parseInt(church),
+            church_id: church ? parseInt(church) : null,
             other_names: "",
         });
         if (resp.error) {
